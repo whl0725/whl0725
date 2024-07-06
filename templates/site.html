@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/site.css">
+	<!--导航栏内容-->
+	<div class="lll row size">
+		<nav calss="navbar navbar-expand-xs">
+			<div class=" col-12 ">
+				<ul class="klo justify-content-center">
+					<li class="nav-item p-3 m-0 ">
+						<a href="{% url 'web:Home' %}" class="nav-link">首页</a>
+					</li>
+					<li class="nav-item p-3">
+						<a href="{% url 'web:personal' %}" class="nav-link">个人中心</a>
+					</li>
+					<li class="nav-item p-3">
+						<a href="{% url 'web:site' %}" class="nav-link">关于本站</a>
+					</li>
+
+					<li class="nav-item dropdown p-3 m-0 ">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							    {{ name }}
+						    </a>
+                            <ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="{% url 'user:logout' %}">登出</a></li>
+						    </ul>
+                        {% else %}
+						    <a href="{% url 'user:login' %}" class="nav-link">登录</a>
+                        {% endif %}
+					</li>
+
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+	<!--搜索栏内容-->
+	<div class=" p-4  lll">
+        <form  method="POST" id="searchform" action="/search/">
+             {% csrf_token %}
+		<input name="s" class="form-control" list="datalistOptions" id="exampleDataList val" placeholder="Type to search...">
+        </form>
+    </div>
+
+
+	<!--座右铭内容-->
+
+	<div class=" p-4">
+		<div class="row  mantra">
+			<div class="rol-12 text-center ">
+				<p>当天赋,努力都成为炮灰的时候,请相信不败的意识会带你杀出重围</p>
+			</div>
+		</div>
+	</div>
+
+	<!--文章内容-->
+	<div class="container">
+		<div class="mian">
+			<div class="left col-sm-8">
+				<div class="text_tab show">
+					<h3>关于站长</h3>
+                    <p>是一位来自河北的大学生，擅长python和c++，前端学得不是特别好，热爱生活，喜欢自由。目前正在学习vue和js</p>
+                    <h3>
+                        本站来历
+                    </h3>
+                    <p>本站是站长在学习前端和后端的时候做出来的，在很多地方还有不足，这个会随着站长学的越来越多而不断进行迭代。</p>
+                    <h3>
+                        关于本站
+                    </h3>
+                    <p>为它取名未明阁,是希望在茫茫网络上，为进来的网友提供一些计算机上的帮助，技术上有所精进，各位未来前途光明。</p>
+                    <p>也意味这是茫茫网络是上一所无名之阁，一所不
+                        需要被铭记的阁楼</p>
+				</div>
+
+			</div>
+			<div class="rii col-sm-3">
+				<div class="anniu">
+					<h3 class="title" style="color: white">热门文章</h3>
+                </div>
+                <br>
+                    {% for w in c %}
+                        <h3 style="word-wrap:break-word;"><a href="{% url 'web:kongjian' i.id %}">{{ w.title }}</a></h3>
+                    {% endfor %}
+				<div class="anniu">
+					<h3 class="title" style="color: white">资料</h3>
+					{% for i in zl %}
+                        <p style="word-wrap:break-word;">{{ i.content }}</p>
+                    {% endfor %}
+				</div>
+            </div>
+		</div>
+	</div>
+	<!--icp备案-->
+	<div class="footer">
+		<div class="container">
+			<!--<div class="row"> -->
+			<div class="rol-12 fixed-bottom text-center">
+                <p style="color: #F4F5F6">京ICP备2024050578号-1</p>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+
+</html>

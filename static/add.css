@@ -1,0 +1,13 @@
+.row-center{
+  text-align:center;
+  margin-top: 400px;
+}
+.col-center {
+  display:inline-block;
+  float:none;
+  text-align:left;
+  opacity: 0.7;
+}
+.w{
+  color: #fff;
+}

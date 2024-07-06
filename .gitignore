@@ -1,0 +1,6 @@
+db.sqlite3
+static/images/
+user/migrations/
+web/migrations/
+
+

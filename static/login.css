@@ -1,0 +1,25 @@
+body {
+  background-image: url('../static/picture/666.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+}
+.row-center{
+  text-align:center;
+  margin-top: 180px;
+}
+.col-center {
+  display:inline-block;
+  float:none;
+  text-align:left;
+  opacity: 0.7;
+}
+.w{
+  color: #fff;
+}
